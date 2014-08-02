@@ -16,15 +16,15 @@ class NgCacheGen{
 
     private $files=array();
 
-    private $templateExt=array(
-        "html"
-    );
+    private $templateExt="html";
 
 
 
 
     private $prefix="";
-    public function setTemplateFile(string $file){
+    public function setTemplateFile($file){
+        if(!$file)
+            return;
         if(is_file($file)){
             $this->templateFile=$file;
         }
@@ -33,23 +33,23 @@ class NgCacheGen{
         }
     }
 
-    public function setExportName(string $exportName){
+    public function setExportName($exportName){
         $this->exportName=$exportName;
     }
 
-    public function setMinify(boolean $minify){
+    public function setMinify($minify){
         $this->minify=$minify;
     }
 
-    public function setTemplateExt(array $ext){
+    public function setTemplateExt($ext){
         $this->templateExt=$ext;
     }
 
-    public function setPrefix(string $prefix){
+    public function setPrefix($prefix){
         $this->prefix=$prefix;
     }
 
-    function NgCacheGen($root){
+    function __construct($root){
         if(is_dir($root)){
             $this->root=$root;
             $this->getDirFiles(new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($this->root)));
@@ -68,9 +68,10 @@ class NgCacheGen{
         }
         $result="";
         foreach($this->files as $file){
-            if($this->checkTemplateExt($file))
+            if(!$this->checkTemplateExt($file))
                 continue;
-            $fileContent=file_get_contents($file);
+            $fileContent=preg_replace("/\s+/", " ", file_get_contents($file));
+
             $append=$this->template;
             $append=str_replace("{{FILE-PATH}}",str_replace("\\","/",$file),$append);
             $append=str_replace("{{FILE-DATA}}",str_replace('"','\"',$fileContent),$append);
@@ -80,17 +81,17 @@ class NgCacheGen{
     }
 
 
-    private function checkTemplateExt(string $file){
-        foreach($this->templateExt as $ext){
-            if(!preg_match("/.".$ext."/",$file)){
-                return false;
-            }
+    private function checkTemplateExt($file){
+        $ext = pathinfo($file, PATHINFO_EXTENSION);
+        if($ext!=$this->templateExt){
+            return false;
         }
         return true;
     }
 
-    private function getDirFiles(\RecursiveIteratorIterator $iterator){
+    private function getDirFiles( $iterator){
         foreach ($iterator as $path) {
+
             if ($path->isDir())
             {
                 $this->getDirFiles($path);
