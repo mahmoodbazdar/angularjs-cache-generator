@@ -22,8 +22,11 @@ prefix address before html file
 
  ex:
  template file real address: /library/templates/test/action.html
+
  current class instance dir: /library/gen.php
+
  then prefix = /library/
+
 ```
 $ngCacheGen->setPrefix("/library/");
 ```
