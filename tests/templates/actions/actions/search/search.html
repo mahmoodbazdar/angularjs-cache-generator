@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{data.strings.searchTitle}}</h3>
+</div>
+<div class="modal-body">
+    <form role="form">
+       <a href="#" ng-click="addNew()"><i class="glyphicon glyphicon-plus"></i></a>
+        <table>
+            <tr ng-repeat="condition in conditions">
+                <td >
+                    <select class="form-control" ng-disabled="!$index" ng-options="operation.name for operation in srh.operations track by operation.key" ng-model="operation" ng-change="selectOperation"></select>
+                </td>
+                <td>
+                    <select class="form-control"  ng-change="selectAction($index)" ng-model="searchTypes" ng-options="field.name for field in condition.options track by field.key" >
+                    </select>
+                </td>
+                <td ng-show="condition.method" >
+                    <select class="form-control"   ng-change="selectMethod($index)" ng-model="searchMethods" ng-options="item.name for item in condition.method track by item.opr" >
+                    </select>
+                </td>
+                <td ng-show="condition.form">
+                    <div ng-repeat="elm in condition.form">
+                    <element  gs-form-template="{{elm.type}}"></element>
+                    </div>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" ng-click="removeRow($index)"><i class="glyphicon glyphicon-remove"></i></button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">{{data.strings.searchOk}}</button>
+    <button class="btn btn-warning" ng-click="cancel()">{{data.strings.searchCancel}}</button>
+</div>

@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{data.rowAction.strings.viewTitle}}</h3>
+</div>
+<div class="modal-body">
+    <table>
+        <tr ng-repeat="elm in row.data">
+            <td>{{elm.key}}</td>
+            <td>{{elm.value}}</td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="close()">{{data.rowAction.strings.viewClose}}</button>
+</div>

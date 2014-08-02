@@ -1,0 +1,13 @@
+<div class="row" ng-controller="actionsController as actionsCtrl">
+    <gs-actions></gs-actions>
+</div>
+<table class="table table-hover">
+    <thead ng-controller="headController as headCtrl">
+    <tr gs-table-head ></tr>
+    </thead>
+    <tbody ng-controller="BodyController as bodyCtrl" gs-table-body>
+    </tbody>
+</table>
+<div ng-controller="gsPaginationController as pCtrl">
+    <gs-pagination></gs-pagination>
+</div>

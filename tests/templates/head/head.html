@@ -1,0 +1,13 @@
+<tr>
+    <th mg-show="headCtrl.th.rowItem.enable">
+        {{headCtrl.th.rowItem.strings.rowItem}}
+    </th>
+    <th ng-repeat="th in headCtrl.th.th">
+        {{th.title}}
+        <gs-head-search ng-show="th.enable.search"></gs-head-search>
+        <gs-head-sort ng-show="th.enable.sort"></gs-head-sort>
+    </th>
+    <th ng-show="headCtrl.th.actions.enable">
+        {{headCtrl.th.actions.strings.actions}}
+    </th>
+</tr>

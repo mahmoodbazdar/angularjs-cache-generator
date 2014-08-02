@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{data.rowAction.strings.editTitle}}</h3>
+</div>
+<div class="modal-body">
+    <form role="form">
+        <div class="form-group" ng-repeat="element in row.data" ng-init="elm=element.form">
+            <element gs-form-template="{{elm.type}}"></element>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="save()">{{data.rowAction.strings.editSave}}</button>
+    <button class="btn btn-warning" ng-click="cancel()">{{data.rowAction.strings.editCancel}}</button>
+</div>

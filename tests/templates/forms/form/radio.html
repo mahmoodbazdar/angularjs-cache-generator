@@ -1,0 +1,6 @@
+<label>{{elm.label}}</label>
+<div class="btn-group">
+    <label ng-repeat="items in elm.values" for="{{elm.model+$parent.$parent.$index+$index}}">
+        <input type="radio" ng-model="elm.val" id="{{elm.model+$parent.$parent.$index+$index}}" name="{{elm.model+$parent.$parent.$index}}" value="{{items.value}}">{{items.text}}
+   </label>
+</div>

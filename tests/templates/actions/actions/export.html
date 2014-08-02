@@ -1,0 +1,13 @@
+<div class="btn-group" dropdown ng-show="actionsCtrl.setting.enable.export.active">
+<button type="button" class="btn btn-danger">{{actionsCtrl.setting.strings.export}}</button>
+<button type="button" class="btn btn-danger dropdown-toggle">
+    <span class="caret"></span>
+    <span class="sr-only">{{actionsCtrl.setting.string.export}}</span>
+    </button>
+<ul class="dropdown-menu" role="menu">
+    <li><a href="#" ng-show="actionsCtrl.setting.enable.export.excel">{{actionsCtrl.setting.strings.excel}}</a></li>
+    <li><a href="#" ng-show="actionsCtrl.setting.enable.export.pdf">{{actionsCtrl.setting.strings.pdf}}</a></li>
+    <li><a href="#" ng-show="actionsCtrl.setting.enable.export.csv">{{actionsCtrl.setting.strings.csv}}</a></li>
+    <li><a href="#" ng-show="actionsCtrl.setting.enable.export.json">{{actionsCtrl.setting.strings.json}}</a></li>
+    </ul>
+</div>

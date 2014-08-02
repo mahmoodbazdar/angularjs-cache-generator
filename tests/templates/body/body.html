@@ -1,0 +1,17 @@
+<tr ng-repeat="rows in bodyCtrl.rows.data[bodyCtrl.currentPage]" ng-class="{'success': rows.selected}">
+    <td ng-show="bodyCtrl.rows.rowItem.enable">
+        {{getNumber(rows)}}
+    </td>
+    <td ng-repeat="item in rows.data" ng-click="selectRow(rows)">{{item.value}}</td>
+    <td ng-show="bodyCtrl.rows.rowAction.enable.actions">
+        <botton class="btn btn-default edit" ng-show="bodyCtrl.rows.rowAction.enable.edit"ng-click="edit(rows)" tooltip-placement="bottom" tooltip="{{bodyCtrl.rows.rowAction.strings.edit}}">
+            <i class="glyphicon glyphicon-pencil"></i>
+        </botton>
+        <botton class="btn btn-default view" ng-show="bodyCtrl.rows.rowAction.enable.view" ng-click="view(rows)" tooltip-placement="bottom" tooltip="{{bodyCtrl.rows.rowAction.strings.view}}">
+            <i class="glyphicon glyphicon-eye-open"></i>
+        </botton>
+        <botton class="btn btn-default delete" ng-show="bodyCtrl.rows.rowAction.enable.delete" ng-click="delete(rows)" tooltip-placement="bottom" tooltip="{{bodyCtrl.rows.rowAction.strings.delete}}">
+            <i class="glyphicon glyphicon-remove"></i>
+        </botton>
+    </td>
+</tr>

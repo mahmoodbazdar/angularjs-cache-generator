@@ -1,0 +1,7 @@
+<form role="form">
+    <div class="form-group">
+        <label class="sr-only" for="{{th.searchForm[0].model}}">{{th.searchForm[0].label}}</label>-
+        <input type="text" class="form-control" ng-model="th.searchForm[0].val"  id="{{th.searchForm[0].model}}" placeholder="{{th.searchForm[0].placeholder}}">
+        <button class="btn btn-primary" ng-click="searchFilter($index)"><i class="glyphicon glyphicon-search"></i></button>
+    </div>
+</form>
