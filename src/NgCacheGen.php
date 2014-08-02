@@ -73,7 +73,7 @@ class NgCacheGen{
             $fileContent=preg_replace("/\s+/", " ", file_get_contents($file));
 
             $append=$this->template;
-            $append=str_replace("{{FILE-PATH}}",str_replace("\\","/",$file),$append);
+            $append=str_replace("{{FILE-PATH}}",$this->prefix."/".str_replace("\\","/",$file),$append);
             $append=str_replace("{{FILE-DATA}}",str_replace('"','\"',$fileContent),$append);
             $result.=$append;
         }
